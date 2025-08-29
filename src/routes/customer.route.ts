@@ -19,7 +19,7 @@ export class CustomerRoute {
 
     private setupRoutes(){
         this.router.get("/", (req: Request, res: Response) => {
-            res.send("Hello World"); 
+            res.send("Hello World Customer"); 
         });
     
         this.router.post("/", (req: Request, res: Response) => {

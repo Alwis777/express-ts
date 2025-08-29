@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GreetingRoute = void 0;
+exports.CustomerRoute = void 0;
 const express_1 = require("express");
-class GreetingRoute {
+class CustomerRoute {
     static getInstance() {
-        if (!GreetingRoute.instance) {
-            GreetingRoute.instance = new GreetingRoute();
+        if (!CustomerRoute.instance) {
+            CustomerRoute.instance = new CustomerRoute();
         }
-        return GreetingRoute.instance;
+        return CustomerRoute.instance;
     }
     constructor() {
         this.router = (0, express_1.Router)();
@@ -23,5 +23,4 @@ class GreetingRoute {
         });
     }
 }
-exports.GreetingRoute = GreetingRoute;
-//Postman? : Great for debugging your backend before connecting it to a frontend.
+exports.CustomerRoute = CustomerRoute;

@@ -1,5 +1,7 @@
 import { Router } from "express";
 import  {GreetingRoute} from "./greeting.route";
+import { CustomerRoute } from "./customer.route";
+
 
 export class Routes{
     public router: Router;  
@@ -17,8 +19,8 @@ export class Routes{
         this.setupRoutes();
     }
 
-    setupRoutes(){
+    private setupRoutes(){
         this.router.use("/greeting",GreetingRoute.getInstance().router); 
-        this.router.use("/customer",GreetingRoute.getInstance().router);        
+        this.router.use("/customer",CustomerRoute.getInstance().router);        
     }
 }
