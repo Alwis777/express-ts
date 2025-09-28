@@ -15,7 +15,7 @@ class CustomerRoute {
     }
     setupRoutes() {
         this.router.get("/", (req, res) => {
-            res.send("Hello World");
+            res.send("Hello World Customer");
         });
         this.router.post("/", (req, res) => {
             const { name } = req.body.name = req.body.name;

@@ -22,5 +22,13 @@
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alwis777/express-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Alwis777/express-ts/issues"
+  },
+  "homepage": "https://github.com/Alwis777/express-ts#readme"
 }
