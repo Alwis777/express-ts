@@ -1,4 +1,4 @@
-export interface ierror {
+export interface IError {
     key: string;
     message:string;
 
