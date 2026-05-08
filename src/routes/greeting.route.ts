@@ -23,7 +23,7 @@ export class GreetingRoute{
        });
 
        this.router.post("/", (req: Request, res: Response) => {
-           const { name } = req.body.name = req.body.name;
+           const { name } = req.body;
            res.send(`Hello ${name}`);
        });  
 
