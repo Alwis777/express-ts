@@ -7,6 +7,8 @@ import { Routes } from "./routes/routes";
 const app: Application = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.use("/api", Routes.getInstance().router);
 
 const PORT = process.env.PORT || 3000;
