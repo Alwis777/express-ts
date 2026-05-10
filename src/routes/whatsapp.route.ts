@@ -21,7 +21,6 @@ export class WhatsAppRoute {
     }
 
     private setupRoutes() {
-        // Webhook verification
         this.router.get("/webhook", (req: Request, res: Response) => {
             const mode = req.query["hub.mode"];
             const token = req.query["hub.verify_token"];
@@ -35,13 +34,13 @@ export class WhatsAppRoute {
             }
         });
 
-        // Receive messages
         this.router.post("/webhook", async (req: Request, res: Response) => {
             try {
                 const incoming = parseIncomingMessage(req.body);
 
                 if (!incoming) {
-                    res.sendStatus(200);
+                    res.set("Content-Type", "text/xml");
+                    res.send("<Response></Response>");
                     return;
                 }
 
@@ -52,10 +51,12 @@ export class WhatsAppRoute {
                 await logMessage(message, reply);
                 await sendWhatsAppReply(from, reply);
 
-                res.sendStatus(200);
+                res.set("Content-Type", "text/xml");
+                res.send("<Response></Response>");
             } catch (error) {
                 console.error("WhatsApp Webhook Error:", error);
-                res.sendStatus(200);
+                res.set("Content-Type", "text/xml");
+                res.send("<Response></Response>");
             }
         });
     }
