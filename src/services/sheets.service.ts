@@ -1,19 +1,22 @@
 import { google } from "googleapis";
-import path from "path";
-
-const auth = new google.auth.GoogleAuth({
-    keyFile: path.resolve("credentials.json"),
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-});
 
 const SPREADSHEET_ID = "1lb18pxBhs1aix6D5dXfqt7nMy5JmXbD-Vlz_5KO2ft4";
+
+const getAuth = () => {
+    const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS || "{}");
+    
+    return new google.auth.GoogleAuth({
+        credentials,
+        scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+    });
+};
 
 export const logMessage = async (
     userMessage: string,
     aiReply: string
 ): Promise<void> => {
     try {
-        const sheets = google.sheets({ version: "v4", auth });
+        const sheets = google.sheets({ version: "v4", auth: getAuth() });
 
         await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
@@ -31,7 +34,7 @@ export const logMessage = async (
 
 export const getLogs = async (): Promise<any[]> => {
     try {
-        const sheets = google.sheets({ version: "v4", auth });
+        const sheets = google.sheets({ version: "v4", auth: getAuth() });
 
         const response = await sheets.spreadsheets.values.get({
             spreadsheetId: SPREADSHEET_ID,
@@ -40,7 +43,6 @@ export const getLogs = async (): Promise<any[]> => {
 
         const rows = response.data.values || [];
 
-        // Skip the header row and format the data
         return rows.slice(1).map((row) => ({
             timestamp: row[0],
             userMessage: row[1],
