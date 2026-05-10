@@ -28,7 +28,7 @@ export const sendWhatsAppReply = async (
     try {
         const accountSid = process.env.TWILIO_ACCOUNT_SID;
         const authToken = process.env.TWILIO_AUTH_TOKEN;
-        const from = process.env.TWILIO_WHATSAPP_NUMBER;
+        const from = (process.env.TWILIO_WHATSAPP_NUMBER || "").replace(/\s/g, "");
 
         const response = await fetch(
             `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`,
