@@ -5,16 +5,12 @@ export interface WhatsAppMessage {
 
 export const parseIncomingMessage = (body: any): WhatsAppMessage | null => {
     try {
-        // Twilio sends messages in this format
         const message = body?.Body;
         const from = body?.From?.replace("whatsapp:", "");
 
         if (!message || !from) return null;
 
-        return {
-            from,
-            message,
-        };
+        return { from, message };
     } catch (error) {
         console.error("Error parsing WhatsApp message:", error);
         return null;

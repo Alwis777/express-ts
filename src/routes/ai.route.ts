@@ -31,7 +31,7 @@ export class AIRoute {
                     return;
                 }
 
-                const reply = await askAI(message);
+                const reply = await askAI(message, "api-user");
                 await logMessage(message, reply);
                 res.status(HttpStatus.OK).json({ reply });
 
