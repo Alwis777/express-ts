@@ -1,11 +1,13 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express, { Application } from "express";
 import { Routes } from "./routes/routes";
 
-const app:Application = express();
+const app: Application = express();
 
 app.use(express.json());
-app.use("/api",Routes.getInstance().router);
-
+app.use("/api", Routes.getInstance().router);
 
 const PORT = 3000;
 app.listen(PORT, () => {

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch:dev": "tsc --watch",
-    "dev": "nodemon --exec ts-node src/app.ts",
+    "dev": "nodemon --exec ts-node -r dotenv/config src/app.ts",
     "build": "tsc",
     "start": "node dist/app.js"
   },
@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^17.4.2",
+    "dotenv": "^16.6.1",
     "express": "^5.1.0",
+    "googleapis": "^171.4.0",
+    "groq-sdk": "^1.1.2",
     "nodeman": "^1.1.2",
     "openai": "^6.37.0"
   },
