@@ -2,7 +2,7 @@
   "name": "app-1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
     "watch:dev": "tsc --watch",
     "dev": "nodemon --exec ts-node -r dotenv/config src/app.ts",
